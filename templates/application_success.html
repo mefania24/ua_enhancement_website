@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Application Submitted | University of Abra{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align: center; max-width: 650px; margin: 30px auto; padding: 40px 30px;">
+    <div style="font-size: 3rem; color: #0d5c3a; margin-bottom: 10px;">&#10004;</div>
+    <h2 style="color: #073823; font-size: 1.6rem; margin-bottom: 10px;">Application Successfully Received!</h2>
+    <p style="color: #555; font-size: 0.95rem; margin-bottom: 25px;">
+        Thank you, <strong>{{ applicant.fullname }}</strong>. Your admission application has been registered into the University of Abra database.
+    </p>
+
+    <!-- Reference Number Box -->
+    <div style="background-color: #f8fafc; border: 2px dashed #0d5c3a; padding: 20px; border-radius: 8px; margin-bottom: 25px;">
+        <span style="font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Your Application Reference Number</span>
+        <span style="font-size: 1.8rem; font-weight: bold; color: #073823; font-family: monospace;">{{ applicant.ref_number }}</span>
+        <p style="font-size: 0.8rem; color: #777; margin-top: 6px;">Please save or take a picture of this number to track your exam schedule and admission status.</p>
+    </div>
+
+    <!-- Application Summary -->
+    <div style="text-align: left; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 15px; font-size: 0.88rem; margin-bottom: 25px;">
+        <p><strong>Selected Course:</strong> {{ applicant.course }}</p>
+        <p><strong>Campus:</strong> {{ applicant.campus }}</p>
+        <p><strong>Email:</strong> {{ applicant.email }}</p>
+        <p><strong>Contact:</strong> {{ applicant.contact }}</p>
+        <p><strong>Current Status:</strong> <span class="status-badge status-pending">{{ applicant.status }}</span></p>
+    </div>
+
+    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+        <button onclick="window.print()" class="btn btn-secondary" style="background-color: #0d5c3a; border-color: #0d5c3a; color: white;">Print Confirmation</button>
+        <a href="{{ url_for('status') }}" class="btn btn-primary">Check Status Page</a>
+        <a href="{{ url_for('index') }}" class="btn" style="background-color: #e2e8f0; color: #333;">Back to Home</a>
+    </div>
+</div>
+{% endblock %}

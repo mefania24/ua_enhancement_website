@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Home | University of Abra Web Portal{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Welcome to the University of Abra</h2>
+    <p>
+        "A university that produces graduates who are academically competitive, locally responsive, and globally sustained."
+    </p>
+    <div class="hero-buttons">
+        <a href="{{ url_for('apply') }}" class="btn btn-primary">Apply Online for AY 2026-2027</a>
+        <a href="{{ url_for('courses') }}" class="btn btn-secondary">Explore Academic Courses</a>
+        <a href="{{ url_for('status') }}" class="btn btn-secondary">Check Admission Status</a>
+    </div>
+</section>
+
+<!-- Quick Info Cards -->
+<section class="grid-3">
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 1.8rem; color: #0d5c3a; margin-bottom: 4px;">3</h3>
+        <p><strong>Strategic Campuses</strong></p>
+        <span style="font-size: 0.8rem; color: #777;">Lagangilang, Bangued, and La Paz</span>
+    </div>
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 1.8rem; color: #0d5c3a; margin-bottom: 4px;">₱0</h3>
+        <p><strong>Tuition Fee (RA 10931)</strong></p>
+        <span style="font-size: 0.8rem; color: #777;">Free Higher Education for all qualified students</span>
+    </div>
+    <div class="card" style="text-align: center;">
+        <h3 style="font-size: 1.8rem; color: #0d5c3a; margin-bottom: 4px;">100%</h3>
+        <p><strong>Licensure Exam Passing Rate</strong></p>
+        <span style="font-size: 0.8rem; color: #777;">In recent Agriculture & Engineering Board Exams</span>
+    </div>
+</section>
+
+<!-- Featured Programs -->
+<section style="margin-bottom: 35px;">
+    <h2 class="section-title">Featured Academic Programs</h2>
+    <div class="grid-2">
+        {% for course in courses %}
+            <div class="card">
+                <span class="badge">{{ course.campus }}</span>
+                <h3>{{ course.code }} - {{ course.title }}</h3>
+                <p><strong>Department:</strong> {{ course.department }} ({{ course.years }})</p>
+                <p>{{ course.description }}</p>
+                <a href="{{ url_for('apply') }}" class="btn btn-green" style="font-size: 0.8rem; padding: 6px 12px;">Apply for this Course</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center;">
+        <a href="{{ url_for('courses') }}" class="btn btn-green">View All Available Courses &rarr;</a>
+    </div>
+</section>
+
+<!-- Latest Announcements -->
+<section style="margin-bottom: 30px;">
+    <h2 class="section-title">Latest Campus Announcements</h2>
+    <div class="grid-3">
+        {% for item in announcements %}
+            <div class="card">
+                <span class="badge" style="background-color: #fef3c7; color: #92400e;">{{ item.category }} • {{ item.date_posted }}</span>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

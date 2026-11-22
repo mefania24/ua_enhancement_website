@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard | SIAS Portal{% endblock %}
+
+{% block content %}
+<!-- Top Student Profile Card -->
+<div class="card" style="margin-bottom: 25px; border-left: 6px solid #0d5c3a;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 18px;">
+            <div style="width: 65px; height: 65px; background: linear-gradient(135deg, #0d5c3a, #073823); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; border: 3px solid #f4c430;">
+                {{ student.fullname[0] }}
+            </div>
+            <div>
+                <span style="font-size: 0.8rem; color: #64748b; font-family: monospace; font-weight: bold;">STUDENT ID: {{ student.student_id }}</span>
+                <h2 style="color: #073823; font-size: 1.4rem; margin-top: 2px;">{{ student.fullname }}</h2>
+                <p style="font-size: 0.85rem; color: #475569;">{{ student.course }} • {{ student.year_level }}</p>
+                <p style="font-size: 0.8rem; color: #0d5c3a; font-weight: 600;">{{ student.campus }}</p>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 6px; text-align: center;">
+                <span style="font-size: 0.72rem; color: #64748b; text-transform: uppercase; display: block; font-weight: bold;">Semestral GWA</span>
+                <strong style="color: #073823; font-size: 1.15rem;">{{ student.gwa }}</strong>
+                <span style="font-size: 0.7rem; color: #0d5c3a; display: block; font-weight: bold;">Dean's List</span>
+            </div>
+
+            <div style="background-color: #e2f5ea; border: 1px solid #a7f3d0; padding: 8px 16px; border-radius: 6px; text-align: center;">
+                <span style="font-size: 0.72rem; color: #065f46; text-transform: uppercase; display: block; font-weight: bold;">Tuition Status</span>
+                <strong style="color: #065f46; font-size: 1.15rem;">₱0.00</strong>
+                <span style="font-size: 0.7rem; color: #065f46; display: block;">RA 10931 Free</span>
+            </div>
+
+            <a href="{{ url_for('portal_logout') }}" class="btn" style="background-color: #fee2e2; color: #991b1b; padding: 8px 14px; font-size: 0.8rem;">
+                Log Out
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Enrolled Subjects & Grades -->
+<div class="card" style="margin-bottom: 25px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+        <h3 class="section-title" style="margin-bottom: 0;">Enrolled Subjects & Grades (AY 2026-2027)</h3>
+        <button onclick="window.print()" class="btn btn-green" style="font-size: 0.8rem; padding: 6px 12px;">
+            🖨️ Print Grade Slip
+        </button>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Descriptive Title</th>
+                    <th style="text-align: center;">Units</th>
+                    <th>Instructor</th>
+                    <th style="text-align: center;">Midterm Grade</th>
+                    <th style="text-align: center;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in grades %}
+                    <tr>
+                        <td><strong>{{ g.subject_code }}</strong></td>
+                        <td>{{ g.subject_title }}</td>
+                        <td style="text-align: center;">{{ g.units }}</td>
+                        <td>{{ g.instructor }}</td>
+                        <td style="text-align: center; font-weight: bold; color: #073823;">{{ g.grade }}</td>
+                        <td style="text-align: center;">
+                            <span class="status-badge status-admitted">Passed</span>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: #94a3b8; padding: 15px;">No subjects found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Clearance & Downloads -->
+<div class="grid-2">
+    <!-- Semestral Online Clearance -->
+    <div class="card">
+        <h3 style="color: #0d5c3a; margin-bottom: 15px;">Semestral Online Clearance</h3>
+        <ul style="list-style: none; font-size: 0.88rem; line-height: 2;">
+            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
+                <span>Library Clearance:</span>
+                <span class="status-badge status-admitted">Cleared</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
+                <span>Accounting / Cashier:</span>
+                <span class="status-badge status-admitted">Cleared (Zero Balance)</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
+                <span>Guidance Office:</span>
+                <span class="status-badge status-admitted">Cleared</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
+                <span>College Dean / Department:</span>
+                <span class="status-badge status-admitted">Cleared</span>
+            </li>
+            <li style="display: flex; justify-content: space-between; padding: 6px 0;">
+                <span>University Registrar:</span>
+                <span class="status-badge status-admitted">Cleared</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Downloadable Documents -->
+    <div class="card">
+        <h3 style="color: #0d5c3a; margin-bottom: 15px;">Student Documents & Forms</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+            <a href="#" onclick="alert('Downloading Certificate of Registration (COR)...'); return false;" class="btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1; color: #073823; text-align: left; padding: 10px 14px;">
+                📄 <strong>Certificate of Registration (COR)</strong><br>
+                <small style="color: #64748b;">Official enrollment assessment form</small>
+            </a>
+
+            <a href="#" onclick="alert('Downloading Transcript of Records (TOR) Request Slip...'); return false;" class="btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1; color: #073823; text-align: left; padding: 10px 14px;">
+                📝 <strong>Transcript of Records (TOR) Request Form</strong><br>
+                <small style="color: #64748b;">For official academic credential requests</small>
+            </a>
+
+            <a href="#" onclick="alert('Downloading UA Student Handbook PDF...'); return false;" class="btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1; color: #073823; text-align: left; padding: 10px 14px;">
+                📘 <strong>University of Abra Student Handbook</strong><br>
+                <small style="color: #64748b;">Academic rules, code of discipline, and student rights</small>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Online Admission Application | University of Abra{% endblock %}
+
+{% block content %}
+<div class="form-box">
+    <h2 class="section-title">University of Abra - Online Admission Application</h2>
+    <p style="font-size: 0.88rem; color: #555; margin-bottom: 20px;">
+        Please fill out this form to register for the upcoming Academic Year 2026-2027. Once submitted, you will receive an official Application Reference Number (ARN).
+    </p>
+
+    <div style="background-color: #fef3c7; border: 1px solid #fde68a; padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 0.85rem; color: #92400e;">
+        <strong>Notice:</strong> Under Republic Act No. 10931, tuition and miscellaneous fees are 100% free for all qualified Filipino undergraduate students.
+    </div>
+
+    <form method="POST" action="{{ url_for('apply') }}">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="fullname">Full Name (Last Name, First Name, Middle Initial) *</label>
+                <input type="text" name="fullname" id="fullname" class="form-control" placeholder="e.g. Dela Cruz, Juan M." required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="e.g. juan@gmail.com" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="contact">Mobile Contact Number *</label>
+                <input type="tel" name="contact" id="contact" class="form-control" placeholder="e.g. 09171234567" required>
+            </div>
+            <div class="form-group">
+                <label for="campus">Preferred Campus *</label>
+                <select name="campus" id="campus" class="form-control" required>
+                    <option value="Lagangilang Campus">Lagangilang Main Campus (Agriculture, Computing, Education)</option>
+                    <option value="Bangued Campus">Bangued Campus (Engineering, Industrial Tech, Arts & Sciences)</option>
+                    <option value="La Paz Campus">La Paz Campus (Agri-Technology)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="course">Preferred Degree Course *</label>
+            <select name="course" id="course" class="form-control" required>
+                <option value="">-- Choose a Degree Program --</option>
+                {% for p in programs %}
+                    <option value="{{ p.title }} ({{ p.campus }})">{{ p.title }} - [{{ p.campus }}]</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="prev_school">High School / School Last Attended *</label>
+                <input type="text" name="prev_school" id="prev_school" class="form-control" placeholder="e.g. Abra High School" required>
+            </div>
+            <div class="form-group">
+                <label for="average">General High School Average (GPA) *</label>
+                <input type="text" name="average" id="average" class="form-control" placeholder="e.g. 91.50" required>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; text-align: right;">
+            <button type="reset" class="btn" style="background-color: #e2e8f0; color: #333; margin-right: 8px;">Clear</button>
+            <button type="submit" class="btn btn-green">Submit Admission Application</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

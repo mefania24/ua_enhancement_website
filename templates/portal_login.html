@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Student Portal Login (SIAS) | University of Abra{% endblock %}
+
+{% block content %}
+<div class="form-box" style="max-width: 500px; margin: 30px auto; text-align: center;">
+    <div style="width: 70px; height: 70px; margin: 0 auto 15px auto; background-color: #e2f5ea; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #0d5c3a;">
+        <span style="font-size: 2rem;">🎓</span>
+    </div>
+    
+    <h2 style="color: #073823; font-size: 1.5rem; margin-bottom: 6px;">Student SIAS Portal</h2>
+    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 25px;">
+        Student Information and Accounting System • University of Abra
+    </p>
+
+    <!-- Login Form -->
+    <form method="POST" action="{{ url_for('portal_login') }}" style="text-align: left;">
+        <div class="form-group">
+            <label for="student_id">Student ID Number</label>
+            <input type="text" name="student_id" id="student_id" class="form-control" placeholder="e.g. 2023-0145" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Portal Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-green" style="width: 100%; padding: 11px; margin-top: 5px;">
+            Log In to Portal
+        </button>
+    </form>
+
+    <!-- Quick Demo Login Button for Testing / Presentation -->
+    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+        <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 10px;">For demo / teacher presentation:</p>
+        <a href="{{ url_for('portal_demo') }}" class="btn btn-primary" style="display: block; width: 100%;">
+            👉 1-Click Demo Login (Maria Santos - BSIT)
+        </a>
+    </div>
+
+    <div style="margin-top: 15px; font-size: 0.75rem; color: #94a3b8;">
+        Free Higher Education Act (RA 10931) • Zero Tuition Fee
+    </div>
+</div>
+{% endblock %}

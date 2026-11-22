@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Check Admission Status | University of Abra{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 750px; margin: 0 auto;">
+    <h2 class="section-title">Admission Application Status Tracker</h2>
+    <p style="font-size: 0.88rem; color: #555; margin-bottom: 20px;">
+        Enter your Application Reference Number below to check if your admission has been evaluated, approved, or scheduled for examination.
+    </p>
+
+    <!-- Search Form -->
+    <form method="POST" action="{{ url_for('status') }}" style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
+        <input type="text" name="ref_number" class="form-control" placeholder="Enter Reference Number (e.g. UA-2026-101)" style="flex: 1; min-width: 250px;" required>
+        <button type="submit" class="btn btn-green">Check Status</button>
+    </form>
+
+    <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 25px;">
+        <em>Testing sample numbers:</em> <strong>UA-2026-101</strong> (Qualified) or <strong>UA-2026-102</strong> (Pending Review)
+    </div>
+
+    <!-- Results Display -->
+    {% if applicant %}
+        <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 20px; margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 15px;">
+                <div>
+                    <span style="font-size: 0.8rem; color: #64748b; font-family: monospace;">{{ applicant.ref_number }}</span>
+                    <h3 style="color: #073823; font-size: 1.3rem;">{{ applicant.fullname }}</h3>
+                </div>
+                <div>
+                    {% if applicant.status == 'Qualified for Exam' %}
+                        <span class="status-badge status-qualified">{{ applicant.status }}</span>
+                    {% elif applicant.status == 'Admitted' %}
+                        <span class="status-badge status-admitted">{{ applicant.status }}</span>
+                    {% else %}
+                        <span class="status-badge status-pending">{{ applicant.status }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="grid-2" style="font-size: 0.88rem; margin-bottom: 15px;">
+                <p><strong>Campus Applied:</strong> {{ applicant.campus }}</p>
+                <p><strong>Chosen Course:</strong> {{ applicant.course }}</p>
+                <p><strong>Previous School:</strong> {{ applicant.prev_school }}</p>
+                <p><strong>General Average:</strong> {{ applicant.average }}%</p>
+            </div>
+
+            <!-- Admissions Remarks -->
+            <div style="background-color: #fef3c7; border: 1px solid #fde68a; padding: 12px 15px; border-radius: 6px; font-size: 0.85rem; color: #92400e;">
+                <strong>Admissions Remarks / Next Steps:</strong><br>
+                {{ applicant.remarks }}
+            </div>
+        </div>
+    {% elif searched %}
+        <div style="text-align: center; padding: 20px; background-color: #fee2e2; border-radius: 6px; color: #991b1b; font-size: 0.9rem;">
+            No application found matching the reference number entered. Please verify your reference slip.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

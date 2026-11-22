@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Courses & Programs | University of Abra{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+    <h2 class="section-title" style="margin-bottom: 0;">Degree Programs by Campus</h2>
+    
+    <!-- Simple Campus Filter -->
+    <form method="GET" action="{{ url_for('courses') }}" style="display: flex; gap: 8px; align-items: center;">
+        <label for="campus" style="font-size: 0.88rem; font-weight: 600;">Filter Campus:</label>
+        <select name="campus" id="campus" class="form-control" style="width: auto; padding: 6px 10px;" onchange="this.form.submit()">
+            <option value="All" {% if selected_campus == 'All' %}selected{% endif %}>All Campuses</option>
+            <option value="Lagangilang" {% if selected_campus == 'Lagangilang' %}selected{% endif %}>Lagangilang Main Campus</option>
+            <option value="Bangued" {% if selected_campus == 'Bangued' %}selected{% endif %}>Bangued Campus</option>
+            <option value="La Paz" {% if selected_campus == 'La Paz' %}selected{% endif %}>La Paz Campus</option>
+        </select>
+    </form>
+</div>
+
+<div class="grid-2">
+    {% for p in programs %}
+        <div class="card">
+            <span class="badge">{{ p.campus }}</span>
+            <span class="badge" style="background-color: #f1f5f9; color: #475569;">{{ p.years }}</span>
+            <h3>{{ p.code }} - {{ p.title }}</h3>
+            <p><strong>Department:</strong> {{ p.department }}</p>
+            <p>{{ p.description }}</p>
+            <div style="margin-top: 15px; border-top: 1px solid #edf2f7; padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.8rem; color: #0d5c3a; font-weight: bold;">Free Tuition (RA 10931)</span>
+                <a href="{{ url_for('apply') }}" class="btn btn-green" style="font-size: 0.8rem; padding: 6px 12px;">Apply Online</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

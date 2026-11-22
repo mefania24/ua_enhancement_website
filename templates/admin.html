@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Admin View - Applications | University of Abra{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+    <div>
+        <h2 class="section-title" style="margin-bottom: 4px;">Admissions Admin & Evaluator View</h2>
+        <p style="font-size: 0.85rem; color: #64748b;">Review submitted student applications and update evaluation status.</p>
+    </div>
+    <div style="background-color: #0d5c3a; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;">
+        Total Applicants: {{ total_applicants }}
+    </div>
+</div>
+
+<!-- Applicants Table -->
+<div class="table-responsive" style="margin-bottom: 30px;">
+    <table>
+        <thead>
+            <tr>
+                <th>Ref Number</th>
+                <th>Applicant Name</th>
+                <th>Campus</th>
+                <th>Course Applied</th>
+                <th>High School Average</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in applicants %}
+                <tr>
+                    <td><strong>{{ a.ref_number }}</strong></td>
+                    <td>{{ a.fullname }}<br><small style="color: #64748b;">{{ a.email }} | {{ a.contact }}</small></td>
+                    <td>{{ a.campus }}</td>
+                    <td>{{ a.course }}</td>
+                    <td>{{ a.average }}%</td>
+                    <td>
+                        {% if a.status == 'Qualified for Exam' %}
+                            <span class="status-badge status-qualified">{{ a.status }}</span>
+                        {% elif a.status == 'Admitted' %}
+                            <span class="status-badge status-admitted">{{ a.status }}</span>
+                        {% else %}
+                            <span class="status-badge status-pending">{{ a.status }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <!-- Simple Update Status Form -->
+                        <form method="POST" action="{{ url_for('admin_update', id=a.id) }}" style="display: flex; flex-direction: column; gap: 4px;">
+                            <select name="status" class="form-control" style="font-size: 0.75rem; padding: 4px;">
+                                <option value="Pending Review" {% if a.status == 'Pending Review' %}selected{% endif %}>Pending Review</option>
+                                <option value="Qualified for Exam" {% if a.status == 'Qualified for Exam' %}selected{% endif %}>Qualified for Exam</option>
+                                <option value="Admitted" {% if a.status == 'Admitted' %}selected{% endif %}>Admitted</option>
+                            </select>
+                            <input type="text" name="remarks" value="{{ a.remarks }}" class="form-control" placeholder="Update remarks" style="font-size: 0.75rem; padding: 4px;">
+                            <button type="submit" class="btn btn-green" style="font-size: 0.72rem; padding: 4px 8px;">Save</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" style="text-align: center; color: #94a3b8; padding: 20px;">No applications submitted yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Received Inquiries Table -->
+<h3 class="section-title" style="font-size: 1.15rem;">Received Inquiries & Messages</h3>
+<div class="table-responsive">
+    <table>
+        <thead>
+            <tr>
+                <th>Sender Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inq in inquiries %}
+                <tr>
+                    <td><strong>{{ inq.name }}</strong></td>
+                    <td>{{ inq.email }}</td>
+                    <td>{{ inq.subject }}</td>
+                    <td>{{ inq.message }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: #94a3b8; padding: 20px;">No messages received yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
