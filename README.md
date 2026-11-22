@@ -47,7 +47,7 @@ The **Student Portal (SIAS)** is located right on the navigation bar or by going
 
 ---
 
-## 📌 Complete List of Pages to Show Your Professor
+## 📌List of Pages
 
 1. **Homepage (`/`)**  
    * Shows the official University of Abra branding (Green & Gold), hero banner, quick facts, featured courses, and campus news.
@@ -79,8 +79,3 @@ The **Student Portal (SIAS)** is located right on the navigation bar or by going
   * `applicants` (Submitted student admission forms and evaluation statuses)
   * `announcements` (Campus news bulletins)
   * `inquiries` (Messages sent from the Contact page)
-
----
-
-## 📄 Proposal & Defense Notes
-See [PROPOSAL.md](PROPOSAL.md) for the complete student proposal and the oral defense Q&A guide.
