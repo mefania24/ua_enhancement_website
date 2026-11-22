@@ -3,18 +3,20 @@
 {% block title %}News & Bulletins | University of Abra{% endblock %}
 
 {% block content %}
-<h2 class="section-title">Campus News & Official Announcements</h2>
-<p style="font-size: 0.88rem; color: #555; margin-bottom: 25px;">
+<h2 class="section-title">Campus News & Official Bulletins</h2>
+<p style="font-size: 0.92rem; color: var(--ua-text-muted); margin-bottom: 25px;">
     Official notices, admission schedules, and academic updates from the University of Abra.
 </p>
 
 <div class="grid-2">
     {% for n in announcements %}
-        <div class="card">
-            <span class="badge" style="background-color: #e2f5ea; color: #065f46;">{{ n.category }}</span>
-            <span style="font-size: 0.75rem; color: #777; float: right;">{{ n.date_posted }}</span>
-            <h3 style="margin-top: 5px;">{{ n.title }}</h3>
-            <p style="line-height: 1.6; margin-top: 10px;">{{ n.content }}</p>
+        <div class="card" style="border-top: 4px solid var(--ua-blue);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span class="badge" style="background-color: var(--ua-azure-soft); color: var(--ua-blue);">{{ n.category }}</span>
+                <span style="font-size: 0.78rem; color: var(--ua-text-muted); font-weight: 600;">{{ n.date_posted }}</span>
+            </div>
+            <h3 style="margin-top: 6px;">{{ n.title }}</h3>
+            <p style="line-height: 1.65; margin-top: 10px;">{{ n.content }}</p>
         </div>
     {% endfor %}
 </div>

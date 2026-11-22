@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}University of Abra (UA){% endblock %}</title>
+    <!-- Modern University Typography (Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-    <!-- Header Banner -->
+    <!-- Header Banner Matching UA Official Seal -->
     <header class="top-header">
         <a href="{{ url_for('index') }}" class="school-brand">
             <img src="{{ url_for('static', filename='images/ua_logo.svg') }}" alt="UA Logo" class="school-logo">
@@ -17,7 +21,7 @@
                 <p>Formerly Abra State Institute of Sciences and Technology (ASIST) • RA 11574</p>
             </div>
         </a>
-        <div class="header-tag"></div>
+        <div class="header-tag">Official State University</div>
     </header>
 
     <!-- Navigation Bar -->
@@ -26,7 +30,7 @@
             <li><a href="{{ url_for('index') }}">Home</a></li>
             <li><a href="{{ url_for('about') }}">About UA</a></li>
             <li><a href="{{ url_for('courses') }}">Courses & Campuses</a></li>
-            <li><a href="{{ url_for('portal') }}" style="color: #f4c430; font-weight: bold;">Student Portal (SIAS)</a></li>
+            <li><a href="{{ url_for('portal') }}" class="nav-highlight">🎓 Student Portal (SIAS)</a></li>
             <li><a href="{{ url_for('status') }}">Check Application</a></li>
             <li><a href="{{ url_for('news') }}">News & Bulletins</a></li>
             <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
@@ -56,30 +60,30 @@
         <div class="footer-content">
             <div class="footer-col">
                 <h4>University of Abra</h4>
-                <p>The first state university in the province of Abra, committed to producing academically competitive and locally responsive graduates.</p>
-                <p style="margin-top: 8px; color: #f4c430;">Republic Act No. 11574</p>
+                <p>The premier state university in the province of Abra, committed to producing academically competitive, locally responsive, and globally sustained graduates.</p>
+                <p style="margin-top: 10px; color: var(--ua-gold, #f59e0b); font-weight: 600;">Republic Act No. 11574</p>
             </div>
             <div class="footer-col">
                 <h4>Our Campuses</h4>
                 <ul>
-                    <li><strong>Lagangilang Main:</strong> Agriculture & Computing</li>
+                    <li><strong>Lagangilang Main:</strong> Agriculture, Computing & Forestry</li>
                     <li><strong>Bangued Campus:</strong> Engineering & Technology</li>
                     <li><strong>La Paz Campus:</strong> Agricultural Technology</li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Quick Links</h4>
+                <h4>Quick Portals</h4>
                 <ul>
                     <li><a href="{{ url_for('portal') }}">Student SIAS Portal</a></li>
                     <li><a href="{{ url_for('apply') }}">Online Admission Form</a></li>
-                    <li><a href="{{ url_for('status') }}">Track Application</a></li>
-                    <li><a href="{{ url_for('courses') }}">List of Programs</a></li>
-                    <li><a href="{{ url_for('contact') }}">Campus Directory</a></li>
+                    <li><a href="{{ url_for('status') }}">Track Application Status</a></li>
+                    <li><a href="{{ url_for('courses') }}">Degree Programs Catalog</a></li>
+                    <li><a href="{{ url_for('contact') }}">Campus Directory & Inquiries</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 University of Abra. Proposed Enhancement Website Project. Individual Submission.
+            &copy; 2026 University of Abra. Proposed Website Enhancement Project. All Rights Reserved.
         </div>
     </footer>
 

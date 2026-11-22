@@ -3,12 +3,12 @@
 {% block title %}Admin View - Applications | University of Abra{% endblock %}
 
 {% block content %}
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; flex-wrap: wrap; gap: 12px;">
     <div>
         <h2 class="section-title" style="margin-bottom: 4px;">Admissions Admin & Evaluator View</h2>
-        <p style="font-size: 0.85rem; color: #64748b;">Review submitted student applications and update evaluation status.</p>
+        <p style="font-size: 0.88rem; color: var(--ua-text-muted);">Review submitted student applications and update evaluation status.</p>
     </div>
-    <div style="background-color: #0d5c3a; color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: bold;">
+    <div style="background: linear-gradient(135deg, var(--ua-blue), var(--ua-navy)); color: white; padding: 8px 18px; border-radius: 20px; font-size: 0.88rem; font-weight: 800; border: 2px solid var(--ua-gold); box-shadow: var(--shadow-sm);">
         Total Applicants: {{ total_applicants }}
     </div>
 </div>
@@ -30,11 +30,11 @@
         <tbody>
             {% for a in applicants %}
                 <tr>
-                    <td><strong>{{ a.ref_number }}</strong></td>
-                    <td>{{ a.fullname }}<br><small style="color: #64748b;">{{ a.email }} | {{ a.contact }}</small></td>
+                    <td><strong style="color: var(--ua-blue);">{{ a.ref_number }}</strong></td>
+                    <td>{{ a.fullname }}<br><small style="color: var(--ua-text-muted);">{{ a.email }} | {{ a.contact }}</small></td>
                     <td>{{ a.campus }}</td>
                     <td>{{ a.course }}</td>
-                    <td>{{ a.average }}%</td>
+                    <td><strong style="color: var(--ua-navy);">{{ a.average }}%</strong></td>
                     <td>
                         {% if a.status == 'Qualified for Exam' %}
                             <span class="status-badge status-qualified">{{ a.status }}</span>
@@ -46,28 +46,29 @@
                     </td>
                     <td>
                         <!-- Simple Update Status Form -->
-                        <form method="POST" action="{{ url_for('admin_update', id=a.id) }}" style="display: flex; flex-direction: column; gap: 4px;">
-                            <select name="status" class="form-control" style="font-size: 0.75rem; padding: 4px;">
+                        <form method="POST" action="{{ url_for('admin_update', id=a.id) }}" style="display: flex; flex-direction: column; gap: 6px;">
+                            <select name="status" class="form-control" style="font-size: 0.78rem; padding: 5px 8px;">
                                 <option value="Pending Review" {% if a.status == 'Pending Review' %}selected{% endif %}>Pending Review</option>
                                 <option value="Qualified for Exam" {% if a.status == 'Qualified for Exam' %}selected{% endif %}>Qualified for Exam</option>
                                 <option value="Admitted" {% if a.status == 'Admitted' %}selected{% endif %}>Admitted</option>
+                                <option value="Not Qualified" {% if a.status == 'Not Qualified' %}selected{% endif %}>Not Qualified</option>
                             </select>
-                            <input type="text" name="remarks" value="{{ a.remarks }}" class="form-control" placeholder="Update remarks" style="font-size: 0.75rem; padding: 4px;">
-                            <button type="submit" class="btn btn-green" style="font-size: 0.72rem; padding: 4px 8px;">Save</button>
+                            <input type="text" name="remarks" value="{{ a.remarks }}" class="form-control" placeholder="Update remarks..." style="font-size: 0.75rem; padding: 4px 6px;">
+                            <button type="submit" class="btn btn-blue" style="font-size: 0.72rem; padding: 4px 8px;">Save</button>
                         </form>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="7" style="text-align: center; color: #94a3b8; padding: 20px;">No applications submitted yet.</td>
+                    <td colspan="7" style="text-align: center; color: var(--ua-text-muted); padding: 22px;">No applications submitted yet.</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
 
-<!-- Received Inquiries Table -->
-<h3 class="section-title" style="font-size: 1.15rem;">Received Inquiries & Messages</h3>
+<!-- Inquiries Section -->
+<h2 class="section-title">Received Website Inquiries</h2>
 <div class="table-responsive">
     <table>
         <thead>
@@ -75,7 +76,7 @@
                 <th>Sender Name</th>
                 <th>Email</th>
                 <th>Subject</th>
-                <th>Message Content</th>
+                <th>Message</th>
             </tr>
         </thead>
         <tbody>
@@ -83,12 +84,12 @@
                 <tr>
                     <td><strong>{{ inq.name }}</strong></td>
                     <td>{{ inq.email }}</td>
-                    <td>{{ inq.subject }}</td>
+                    <td><span class="badge" style="background-color: var(--ua-azure-soft); color: var(--ua-blue);">{{ inq.subject }}</span></td>
                     <td>{{ inq.message }}</td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4" style="text-align: center; color: #94a3b8; padding: 20px;">No messages received yet.</td>
+                    <td colspan="4" style="text-align: center; color: var(--ua-text-muted); padding: 22px;">No messages received yet.</td>
                 </tr>
             {% endfor %}
         </tbody>

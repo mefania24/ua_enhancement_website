@@ -3,14 +3,14 @@
 {% block title %}Online Admission Application | University of Abra{% endblock %}
 
 {% block content %}
-<div class="form-box">
+<div class="form-box" style="border-top: 5px solid var(--ua-blue);">
     <h2 class="section-title">University of Abra - Online Admission Application</h2>
-    <p style="font-size: 0.88rem; color: #555; margin-bottom: 20px;">
-        Please fill out this form to register for the upcoming Academic Year 2026-2027. Once submitted, you will receive an official Application Reference Number (ARN).
+    <p style="font-size: 0.92rem; color: var(--ua-text-muted); margin-bottom: 22px;">
+        Please fill out this official form to apply for admission for Academic Year 2026-2027. Upon submission, you will receive an Application Reference Number (ARN) to track your status.
     </p>
 
-    <div style="background-color: #fef3c7; border: 1px solid #fde68a; padding: 12px 15px; border-radius: 6px; margin-bottom: 20px; font-size: 0.85rem; color: #92400e;">
-        <strong>Notice:</strong> Under Republic Act No. 10931, tuition and miscellaneous fees are 100% free for all qualified Filipino undergraduate students.
+    <div style="background-color: var(--ua-gold-soft); border-left: 4px solid var(--ua-gold); padding: 14px 18px; border-radius: var(--radius-sm); margin-bottom: 24px; font-size: 0.88rem; color: #92400e;">
+        <strong>Notice:</strong> Under Republic Act No. 10931 (Free Higher Education Act), tuition and standard school fees are 100% free for all qualified Filipino undergraduate students.
     </div>
 
     <form method="POST" action="{{ url_for('apply') }}">
@@ -52,18 +52,18 @@
 
         <div class="form-row">
             <div class="form-group">
-                <label for="prev_school">High School / School Last Attended *</label>
+                <label for="prev_school">Last School Attended (High School / Senior High) *</label>
                 <input type="text" name="prev_school" id="prev_school" class="form-control" placeholder="e.g. Abra High School" required>
             </div>
             <div class="form-group">
-                <label for="average">General High School Average (GPA) *</label>
-                <input type="text" name="average" id="average" class="form-control" placeholder="e.g. 91.50" required>
+                <label for="average">General Weighted Average (GWA / Grade) *</label>
+                <input type="number" step="0.01" name="average" id="average" class="form-control" placeholder="e.g. 91.50" required>
             </div>
         </div>
 
-        <div style="margin-top: 20px; text-align: right;">
-            <button type="reset" class="btn" style="background-color: #e2e8f0; color: #333; margin-right: 8px;">Clear</button>
-            <button type="submit" class="btn btn-green">Submit Admission Application</button>
+        <div style="margin-top: 10px; display: flex; justify-content: flex-end; gap: 10px;">
+            <button type="reset" class="btn" style="background-color: var(--ua-border); color: var(--ua-text-main);">Clear</button>
+            <button type="submit" class="btn btn-primary">Submit Application</button>
         </div>
     </form>
 </div>

@@ -4,34 +4,34 @@
 
 {% block content %}
 <!-- Top Student Profile Card -->
-<div class="card" style="margin-bottom: 25px; border-left: 6px solid #0d5c3a;">
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-        <div style="display: flex; align-items: center; gap: 18px;">
-            <div style="width: 65px; height: 65px; background: linear-gradient(135deg, #0d5c3a, #073823); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: bold; border: 3px solid #f4c430;">
+<div class="card" style="margin-bottom: 25px; border-left: 6px solid var(--ua-blue);">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px;">
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="width: 68px; height: 68px; background: linear-gradient(135deg, var(--ua-blue), var(--ua-navy)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; font-weight: 800; border: 3px solid var(--ua-gold); box-shadow: var(--shadow-sm);">
                 {{ student.fullname[0] }}
             </div>
             <div>
-                <span style="font-size: 0.8rem; color: #64748b; font-family: monospace; font-weight: bold;">STUDENT ID: {{ student.student_id }}</span>
-                <h2 style="color: #073823; font-size: 1.4rem; margin-top: 2px;">{{ student.fullname }}</h2>
-                <p style="font-size: 0.85rem; color: #475569;">{{ student.course }} • {{ student.year_level }}</p>
-                <p style="font-size: 0.8rem; color: #0d5c3a; font-weight: 600;">{{ student.campus }}</p>
+                <span style="font-size: 0.8rem; color: var(--ua-blue); font-family: monospace; font-weight: 800; background-color: var(--ua-azure-soft); padding: 2px 8px; border-radius: 4px;">ID: {{ student.student_id }}</span>
+                <h2 style="color: var(--ua-navy); font-size: 1.45rem; font-weight: 800; margin-top: 4px;">{{ student.fullname }}</h2>
+                <p style="font-size: 0.88rem; color: var(--ua-text-muted);">{{ student.course }} • {{ student.year_level }}</p>
+                <p style="font-size: 0.82rem; color: var(--ua-blue); font-weight: 700;">{{ student.campus }}</p>
             </div>
         </div>
 
-        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-            <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; padding: 8px 16px; border-radius: 6px; text-align: center;">
-                <span style="font-size: 0.72rem; color: #64748b; text-transform: uppercase; display: block; font-weight: bold;">Semestral GWA</span>
-                <strong style="color: #073823; font-size: 1.15rem;">{{ student.gwa }}</strong>
-                <span style="font-size: 0.7rem; color: #0d5c3a; display: block; font-weight: bold;">Dean's List</span>
+        <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap;">
+            <div style="background-color: var(--ua-azure-soft); border: 1.5px solid #bfdbfe; padding: 10px 18px; border-radius: var(--radius-sm); text-align: center;">
+                <span style="font-size: 0.72rem; color: var(--ua-blue); text-transform: uppercase; display: block; font-weight: 800; letter-spacing: 0.5px;">Semestral GWA</span>
+                <strong style="color: var(--ua-navy); font-size: 1.25rem;">{{ student.gwa }}</strong>
+                <span style="font-size: 0.72rem; color: var(--ua-green); display: block; font-weight: 800;">★ Dean's List</span>
             </div>
 
-            <div style="background-color: #e2f5ea; border: 1px solid #a7f3d0; padding: 8px 16px; border-radius: 6px; text-align: center;">
-                <span style="font-size: 0.72rem; color: #065f46; text-transform: uppercase; display: block; font-weight: bold;">Tuition Status</span>
-                <strong style="color: #065f46; font-size: 1.15rem;">₱0.00</strong>
-                <span style="font-size: 0.7rem; color: #065f46; display: block;">RA 10931 Free</span>
+            <div style="background-color: var(--ua-green-soft); border: 1.5px solid #a7f3d0; padding: 10px 18px; border-radius: var(--radius-sm); text-align: center;">
+                <span style="font-size: 0.72rem; color: #065f46; text-transform: uppercase; display: block; font-weight: 800; letter-spacing: 0.5px;">Tuition Status</span>
+                <strong style="color: #065f46; font-size: 1.25rem;">₱0.00</strong>
+                <span style="font-size: 0.72rem; color: #065f46; display: block; font-weight: 700;">RA 10931 Free</span>
             </div>
 
-            <a href="{{ url_for('portal_logout') }}" class="btn" style="background-color: #fee2e2; color: #991b1b; padding: 8px 14px; font-size: 0.8rem;">
+            <a href="{{ url_for('portal_logout') }}" class="btn" style="background-color: var(--ua-red-soft); color: var(--ua-red); border: 1px solid #fecaca; padding: 10px 16px; font-size: 0.82rem; font-weight: 700;">
                 Log Out
             </a>
         </div>
@@ -40,9 +40,9 @@
 
 <!-- Enrolled Subjects & Grades -->
 <div class="card" style="margin-bottom: 25px;">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
         <h3 class="section-title" style="margin-bottom: 0;">Enrolled Subjects & Grades (AY 2026-2027)</h3>
-        <button onclick="window.print()" class="btn btn-green" style="font-size: 0.8rem; padding: 6px 12px;">
+        <button onclick="window.print()" class="btn btn-blue" style="font-size: 0.82rem; padding: 8px 16px;">
             🖨️ Print Grade Slip
         </button>
     </div>
@@ -62,18 +62,18 @@
             <tbody>
                 {% for g in grades %}
                     <tr>
-                        <td><strong>{{ g.subject_code }}</strong></td>
+                        <td><strong style="color: var(--ua-navy);">{{ g.subject_code }}</strong></td>
                         <td>{{ g.subject_title }}</td>
                         <td style="text-align: center;">{{ g.units }}</td>
                         <td>{{ g.instructor }}</td>
-                        <td style="text-align: center; font-weight: bold; color: #073823;">{{ g.grade }}</td>
+                        <td style="text-align: center; font-weight: 800; color: var(--ua-navy); font-size: 1rem;">{{ g.grade }}</td>
                         <td style="text-align: center;">
                             <span class="status-badge status-admitted">Passed</span>
                         </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="6" style="text-align: center; color: #94a3b8; padding: 15px;">No subjects found.</td>
+                        <td colspan="6" style="text-align: center; color: var(--ua-text-muted); padding: 18px;">No subjects found.</td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -85,26 +85,26 @@
 <div class="grid-2">
     <!-- Semestral Online Clearance -->
     <div class="card">
-        <h3 style="color: #0d5c3a; margin-bottom: 15px;">Semestral Online Clearance</h3>
-        <ul style="list-style: none; font-size: 0.88rem; line-height: 2;">
-            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
-                <span>Library Clearance:</span>
+        <h3 style="color: var(--ua-navy); margin-bottom: 16px; font-weight: 800;">Semestral Online Clearance</h3>
+        <ul style="list-style: none; font-size: 0.9rem; line-height: 2.2;">
+            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ua-border); padding: 8px 0;">
+                <span>📚 University Library:</span>
                 <span class="status-badge status-admitted">Cleared</span>
             </li>
-            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
-                <span>Accounting / Cashier:</span>
+            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ua-border); padding: 8px 0;">
+                <span>💳 Accounting / Cashier:</span>
                 <span class="status-badge status-admitted">Cleared (Zero Balance)</span>
             </li>
-            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
-                <span>Guidance Office:</span>
+            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ua-border); padding: 8px 0;">
+                <span>🤝 Guidance & Counseling:</span>
                 <span class="status-badge status-admitted">Cleared</span>
             </li>
-            <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #edf2f7; padding: 6px 0;">
-                <span>College Dean / Department:</span>
+            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--ua-border); padding: 8px 0;">
+                <span>🏛️ College Dean / Department:</span>
                 <span class="status-badge status-admitted">Cleared</span>
             </li>
-            <li style="display: flex; justify-content: space-between; padding: 6px 0;">
-                <span>University Registrar:</span>
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0;">
+                <span>🎓 University Registrar:</span>
                 <span class="status-badge status-admitted">Cleared</span>
             </li>
         </ul>
@@ -112,21 +112,21 @@
 
     <!-- Downloadable Documents -->
     <div class="card">
-        <h3 style="color: #0d5c3a; margin-bottom: 15px;">Student Documents & Forms</h3>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-            <a href="#" onclick="alert('Downloading Certificate of Registration (COR)...'); return false;" class="btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1; color: #073823; text-align: left; padding: 10px 14px;">
+        <h3 style="color: var(--ua-navy); margin-bottom: 16px; font-weight: 800;">Student Documents & Forms</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="#" onclick="alert('Downloading Certificate of Registration (COR)...'); return false;" class="btn" style="background-color: var(--ua-bg); border: 1.5px solid var(--ua-border); color: var(--ua-navy); text-align: left; padding: 12px 16px;">
                 📄 <strong>Certificate of Registration (COR)</strong><br>
-                <small style="color: #64748b;">Official enrollment assessment form</small>
+                <small style="color: var(--ua-text-muted);">Official enrollment assessment form</small>
             </a>
 
-            <a href="#" onclick="alert('Downloading Transcript of Records (TOR) Request Slip...'); return false;" class="btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1; color: #073823; text-align: left; padding: 10px 14px;">
+            <a href="#" onclick="alert('Downloading Transcript of Records (TOR) Request Slip...'); return false;" class="btn" style="background-color: var(--ua-bg); border: 1.5px solid var(--ua-border); color: var(--ua-navy); text-align: left; padding: 12px 16px;">
                 📝 <strong>Transcript of Records (TOR) Request Form</strong><br>
-                <small style="color: #64748b;">For official academic credential requests</small>
+                <small style="color: var(--ua-text-muted);">For official academic credential requests</small>
             </a>
 
-            <a href="#" onclick="alert('Downloading UA Student Handbook PDF...'); return false;" class="btn" style="background-color: #f8fafc; border: 1px solid #cbd5e1; color: #073823; text-align: left; padding: 10px 14px;">
+            <a href="#" onclick="alert('Downloading UA Student Handbook PDF...'); return false;" class="btn" style="background-color: var(--ua-bg); border: 1.5px solid var(--ua-border); color: var(--ua-navy); text-align: left; padding: 12px 16px;">
                 📘 <strong>University of Abra Student Handbook</strong><br>
-                <small style="color: #64748b;">Academic rules, code of discipline, and student rights</small>
+                <small style="color: var(--ua-text-muted);">Academic rules, code of discipline, and student rights</small>
             </a>
         </div>
     </div>

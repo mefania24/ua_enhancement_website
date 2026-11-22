@@ -1,70 +1,266 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
   <defs>
-    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ffd700" />
-      <stop offset="50%" stop-color="#d4af37" />
-      <stop offset="100%" stop-color="#aa820a" />
+    <!-- Text path for UNIVERSITY OF ABRA along top arc -->
+    <path id="topArc" d="M 78 300 A 222 222 0 1 1 522 300" fill="none" />
+    
+    <!-- Text path for PHILIPPINES along bottom arc -->
+    <path id="bottomArc" d="M 502 300 A 222 222 0 0 1 98 300" fill="none" />
+
+    <!-- Blue gradient for rich depth -->
+    <radialGradient id="blueRingGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="70%" stop-color="#0a2a9e"/>
+      <stop offset="100%" stop-color="#071d73"/>
+    </radialGradient>
+
+    <!-- Flame gradients -->
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="45%" stop-color="#2563eb"/>
+      <stop offset="80%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
     </linearGradient>
-    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#146c43" />
-      <stop offset="100%" stop-color="#083823" />
+
+    <linearGradient id="flameInnerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="60%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#eff6ff"/>
     </linearGradient>
+
+    <!-- Torch Gradient -->
+    <linearGradient id="torchGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#854d0e"/>
+    </linearGradient>
+
+    <!-- Rice grain definition for the wreath -->
+    <g id="grain">
+      <path d="M 0,-10 C 6,-6 6,6 0,10 C -6,6 -6,-6 0,-10 Z" fill="#ffffff" />
+      <line x1="0" y1="-8" x2="0" y2="8" stroke="#0a2a9e" stroke-width="0.8" />
+    </g>
   </defs>
 
-  <!-- Outer Ring with Gold Border -->
-  <circle cx="100" cy="100" r="96" fill="url(#greenGrad)" stroke="url(#goldGrad)" stroke-width="6" />
-  <circle cx="100" cy="100" r="88" fill="none" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="3,3" />
+  <!-- Outermost circle border -->
+  <circle cx="300" cy="300" r="294" fill="#ffffff" stroke="#061754" stroke-width="4"/>
+  <circle cx="300" cy="300" r="286" fill="none" stroke="#061754" stroke-width="2"/>
 
-  <!-- Circular Text Path for UNIVERSITY OF ABRA -->
-  <path id="textCircle" d="M 24,100 A 76,76 0 1,1 176,100" fill="none" stroke="none" />
-  <text font-family="'Cinzel', 'Times New Roman', Georgia, serif" font-size="12" font-weight="bold" fill="#ffffff" letter-spacing="2.5">
-    <textPath href="#textCircle" startOffset="50%" text-anchor="middle">
-      UNIVERSITY OF ABRA
+  <!-- Thick Royal Blue Ring -->
+  <circle cx="300" cy="300" r="280" fill="url(#blueRingGrad)" stroke="#061754" stroke-width="3"/>
+
+  <!-- Inner border of the blue ring -->
+  <circle cx="300" cy="300" r="198" fill="#ffffff" stroke="#061754" stroke-width="4"/>
+
+  <!-- Text: UNIVERSITY OF ABRA on Top Arc -->
+  <text font-family="'Times New Roman', Georgia, 'Plus Jakarta Sans', serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="3.5">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+      • UNIVERSITY OF ABRA •
     </textPath>
   </text>
 
-  <!-- Circular Text Path for PHILIPPINES & EST. -->
-  <path id="bottomTextCircle" d="M 176,100 A 76,76 0 0,1 24,100" fill="none" stroke="none" />
-  <text font-family="'Cinzel', 'Times New Roman', Georgia, serif" font-size="9" font-weight="bold" fill="#ffd700" letter-spacing="2">
-    <textPath href="#bottomTextCircle" startOffset="50%" text-anchor="middle">
-      • RA 11574 • PHILIPPINES •
+  <!-- Text: PHILIPPINES on Bottom Arc -->
+  <text font-family="'Times New Roman', Georgia, 'Plus Jakarta Sans', serif" font-size="36" font-weight="900" fill="#ffffff" letter-spacing="4">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">
+      • PHILIPPINES •
     </textPath>
   </text>
 
-  <!-- Inner Gold Medallion Ring -->
-  <circle cx="100" cy="100" r="62" fill="#ffffff" stroke="url(#goldGrad)" stroke-width="4" />
+  <!-- Left Wreath: Rice Stalks on Blue Ring -->
+  <g transform="translate(300, 300)">
+    <!-- Arc stem left -->
+    <path d="M -235 60 A 238 238 0 0 1 -235 -60" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Left Grains -->
+    <use href="#grain" transform="translate(-222, -65) rotate(-35) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-238, -50) rotate(-20) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-226, -38) rotate(-10) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-244, -22) rotate(0) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-228, -10) rotate(10) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-246, 5) rotate(15) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-228, 18) rotate(25) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-242, 34) rotate(35) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-224, 46) rotate(45) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(-236, 62) rotate(55) scale(1.1, 0.75)" />
 
-  <!-- Mountain Peaks of Abra Valley (Background) -->
-  <polygon points="50,118 78,82 104,118" fill="#146c43" opacity="0.85" />
-  <polygon points="86,118 116,74 150,118" fill="#0b482c" opacity="0.9" />
-
-  <!-- Sun with Rays rising behind mountains -->
-  <circle cx="100" cy="85" r="14" fill="#ffd700" />
-  <line x1="100" y1="65" x2="100" y2="58" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" />
-  <line x1="84" y1="71" x2="79" y2="66" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" />
-  <line x1="116" y1="71" x2="121" y2="66" stroke="#ffd700" stroke-width="2.5" stroke-linecap="round" />
-
-  <!-- Gear of Technology / Industrial Advancement (Left) -->
-  <g transform="translate(62,122) scale(0.65)">
-    <circle cx="20" cy="20" r="14" fill="none" stroke="#d4af37" stroke-width="5" />
-    <circle cx="20" cy="20" r="6" fill="#083823" />
-    <rect x="17" y="2" width="6" height="5" fill="#d4af37" />
-    <rect x="17" y="33" width="6" height="5" fill="#d4af37" />
-    <rect x="2" y="17" width="5" height="6" fill="#d4af37" />
-    <rect x="33" y="17" width="5" height="6" fill="#d4af37" />
+    <!-- Right Wreath: Rice Stalks on Blue Ring -->
+    <!-- Arc stem right -->
+    <path d="M 235 60 A 238 238 0 0 0 235 -60" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Right Grains -->
+    <use href="#grain" transform="translate(222, -65) rotate(35) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(238, -50) rotate(20) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(226, -38) rotate(10) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(244, -22) rotate(0) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(228, -10) rotate(-10) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(246, 5) rotate(-15) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(228, 18) rotate(-25) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(242, 34) rotate(-35) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(224, 46) rotate(-45) scale(1.1, 0.75)" />
+    <use href="#grain" transform="translate(236, 62) rotate(-55) scale(1.1, 0.75)" />
   </g>
 
-  <!-- Rice/Agri stalk (Right) -->
-  <path d="M 125,142 Q 135,130 134,115 Q 138,124 142,128" fill="none" stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" />
-  <ellipse cx="132" cy="120" rx="3" ry="5" fill="#ffd700" transform="rotate(20 132 120)" />
-  <ellipse cx="138" cy="126" rx="3" ry="5" fill="#ffd700" transform="rotate(45 138 126)" />
+  <!-- Center White Field -->
+  <circle cx="300" cy="300" r="196" fill="#ffffff" />
 
-  <!-- Open Book of Knowledge in Foreground -->
-  <path d="M 72,132 C 84,124 98,128 100,134 C 102,128 116,124 128,132 L 128,145 C 116,138 102,141 100,147 C 98,141 84,138 72,145 Z" fill="#ffffff" stroke="#083823" stroke-width="2" />
-  <line x1="100" y1="134" x2="100" y2="147" stroke="#083823" stroke-width="2" />
+  <!-- Bottom Date: • 2021 • in White Circle -->
+  <text x="300" y="474" font-family="'Times New Roman', Georgia, 'Plus Jakarta Sans', serif" font-size="22" font-weight="900" fill="#082280" text-anchor="middle" letter-spacing="2">
+    • 2021 •
+  </text>
 
-  <!-- Flaming Torch of Enlightenment Centered -->
-  <path d="M 98,132 L 96,110 L 104,110 L 102,132 Z" fill="#b8972b" stroke="#083823" stroke-width="1" />
-  <path d="M 100,92 C 94,98 96,104 100,108 C 104,104 106,98 100,92 Z" fill="#ff4d4d" />
-  <path d="M 100,96 C 97,100 98,103 100,106 C 102,103 103,100 100,96 Z" fill="#ffa500" />
+  <!-- ==================== RED ATOMIC ORBITS ==================== -->
+  <g transform="translate(300, 300)" stroke="#c31818" stroke-width="6.5" fill="none">
+    <!-- Orbit 1 (tilted 30 deg) -->
+    <g transform="rotate(30)">
+      <ellipse cx="0" cy="0" rx="172" ry="74" />
+      <circle cx="-135" cy="-45" r="9" fill="#c31818" stroke="none" />
+      <circle cx="145" cy="38" r="9.5" fill="#c31818" stroke="none" />
+    </g>
+
+    <!-- Orbit 2 (tilted 90 deg / vertical) -->
+    <g transform="rotate(90)">
+      <ellipse cx="0" cy="0" rx="172" ry="74" />
+      <circle cx="-120" cy="50" r="9" fill="#c31818" stroke="none" />
+      <circle cx="130" cy="-48" r="9.5" fill="#c31818" stroke="none" />
+    </g>
+
+    <!-- Orbit 3 (tilted 150 deg / -30 deg) -->
+    <g transform="rotate(150)">
+      <ellipse cx="0" cy="0" rx="172" ry="74" />
+      <circle cx="-140" cy="42" r="9.5" fill="#c31818" stroke="none" />
+      <circle cx="115" cy="-55" r="9" fill="#c31818" stroke="none" />
+    </g>
+  </g>
+
+  <!-- ==================== GREEN TILTED SQUARE (DIAMOND) ==================== -->
+  <!-- Outer green diamond: width from center ~ 138 (corners at 0, -138, etc.) -->
+  <!-- Inner diamond cutout: width from center ~ 94 -->
+  <g transform="translate(300, 300)">
+    <!-- Filled Green Diamond Frame -->
+    <path d="M 0,-144 L 144,0 L 0,144 L -144,0 Z M 0,-98 L -98,0 L 0,98 L 98,0 Z" 
+          fill="#00923f" 
+          stroke="#00682c" 
+          stroke-width="1.5" 
+          fill-rule="evenodd" />
+
+    <!-- Center White Diamond Fill for book and torch -->
+    <polygon points="0,-98 98,0 0,98 -98,0" fill="#ffffff" />
+
+    <!-- TEXT ON 4 FACES OF THE GREEN DIAMOND: -->
+    <!-- Top-Left Edge: INSTRUCTION (angle -45 deg) -->
+    <!-- From (-120, -22) to (-22, -120) -->
+    <text transform="translate(-72, -72) rotate(45)" 
+          font-family="'Plus Jakarta Sans', Arial, sans-serif" 
+          font-size="14.5" 
+          font-weight="900" 
+          fill="#ffffff" 
+          text-anchor="middle" 
+          letter-spacing="2.2">
+      INSTRUCTION
+    </text>
+
+    <!-- Top-Right Edge: RESEARCH (angle 45 deg) -->
+    <!-- From (22, -120) to (120, -22) -->
+    <text transform="translate(72, -72) rotate(-45)" 
+          font-family="'Plus Jakarta Sans', Arial, sans-serif" 
+          font-size="14.5" 
+          font-weight="900" 
+          fill="#ffffff" 
+          text-anchor="middle" 
+          letter-spacing="2.5">
+      RESEARCH
+    </text>
+
+    <!-- Bottom-Left Edge: PRODUCTION (angle 45 deg) -->
+    <!-- From (-120, 22) to (-22, 120) -->
+    <text transform="translate(-72, 72) rotate(-45)" 
+          font-family="'Plus Jakarta Sans', Arial, sans-serif" 
+          font-size="14" 
+          font-weight="900" 
+          fill="#ffffff" 
+          text-anchor="middle" 
+          letter-spacing="2.2">
+      PRODUCTION
+    </text>
+
+    <!-- Bottom-Right Edge: EXTENSION (angle -45 deg) -->
+    <!-- From (22, 120) to (120, 22) -->
+    <text transform="translate(72, 72) rotate(45)" 
+          font-family="'Plus Jakarta Sans', Arial, sans-serif" 
+          font-size="14.5" 
+          font-weight="900" 
+          fill="#ffffff" 
+          text-anchor="middle" 
+          letter-spacing="2.5">
+      EXTENSION
+    </text>
+  </g>
+
+  <!-- ==================== CENTER EMBLEM: TORCH, FLAME & OPEN BOOK ==================== -->
+  <g transform="translate(300, 300)">
+    
+    <!-- TORCH HANDLE (extends downward behind the book) -->
+    <path d="M -7,28 L 7,28 L 4,52 L -4,52 Z" fill="url(#torchGrad)" stroke="#522e03" stroke-width="1.2" />
+    <polygon points="-4,52 4,52 0,64" fill="#a16207" stroke="#522e03" stroke-width="1" />
+
+    <!-- OPEN BOOK (White with black outlines and subtle shading) -->
+    <!-- Left Page -->
+    <path d="M 0,-8 C -18,-15 -42,-13 -58,-6 L -58,24 C -42,17 -18,15 0,22 Z" 
+          fill="#ffffff" stroke="#1e293b" stroke-width="2.2" stroke-linejoin="round" />
+    <!-- Left Page thickness/pages underneath -->
+    <path d="M -58,24 L -58,27 C -42,20 -18,18 0,25 L 0,22 Z" 
+          fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" />
+
+    <!-- Right Page -->
+    <path d="M 0,-8 C 18,-15 42,-13 58,-6 L 58,24 C 42,17 18,15 0,22 Z" 
+          fill="#ffffff" stroke="#1e293b" stroke-width="2.2" stroke-linejoin="round" />
+    <!-- Right Page thickness -->
+    <path d="M 58,24 L 58,27 C 42,20 18,18 0,25 L 0,22 Z" 
+          fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" />
+
+    <!-- Book Center Fold / Spine line -->
+    <line x1="0" y1="-8" x2="0" y2="22" stroke="#1e293b" stroke-width="2.5" />
+
+    <!-- TORCH BOWL / CUP (sits above the book fold) -->
+    <!-- Torch Rim -->
+    <path d="M -20,-14 L 20,-14 L 14,-2 L -14,-2 Z" fill="url(#torchGrad)" stroke="#522e03" stroke-width="1.5" />
+    <!-- Torch Bowl Ribs -->
+    <rect x="-18" y="-12" width="36" height="3" fill="#fbbf24" opacity="0.8" />
+    <line x1="-12" y1="-2" x2="12" y2="-2" stroke="#451a03" stroke-width="2" />
+    <path d="M -12,-2 L 12,-2 L 8,6 L -8,6 Z" fill="#b45309" stroke="#522e03" stroke-width="1.2" />
+
+    <!-- BLUE BURNING FLAME -->
+    <!-- Main Outer Flame Body -->
+    <path d="M -13,-14 
+             C -25,-26 -30,-48 -14,-66 
+             C -10,-48 -2,-42 6,-56 
+             C 12,-66 18,-74 15,-84 
+             C 28,-72 34,-52 24,-36 
+             C 20,-30 22,-22 25,-18 
+             C 27,-15 28,-14 13,-14 
+             Z" 
+          fill="url(#flameGrad)" 
+          stroke="#1e3a8a" 
+          stroke-width="1.5" />
+
+    <!-- Inner Bright Flame Highlights -->
+    <path d="M -8,-16 
+             C -16,-28 -18,-44 -7,-54 
+             C -5,-42 2,-36 8,-46 
+             C 14,-56 16,-62 14,-68 
+             C 22,-58 24,-44 17,-32 
+             C 13,-26 15,-20 18,-16 
+             Z" 
+          fill="url(#flameInnerGrad)" 
+          opacity="0.9" />
+
+    <!-- Core White Flame Tongue -->
+    <path d="M -3,-18 
+             C -8,-28 -8,-40 -2,-46 
+             C 0,-38 5,-34 8,-40 
+             C 12,-48 11,-52 10,-55 
+             C 16,-46 16,-36 10,-26 
+             C 7,-22 8,-18 8,-18 
+             Z" 
+          fill="#ffffff" 
+          opacity="0.85" />
+  </g>
 </svg>

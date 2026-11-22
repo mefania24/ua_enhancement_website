@@ -3,13 +3,13 @@
 {% block title %}Student Portal Login (SIAS) | University of Abra{% endblock %}
 
 {% block content %}
-<div class="form-box" style="max-width: 500px; margin: 30px auto; text-align: center;">
-    <div style="width: 70px; height: 70px; margin: 0 auto 15px auto; background-color: #e2f5ea; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #0d5c3a;">
+<div class="form-box" style="max-width: 480px; margin: 30px auto; text-align: center; border-top: 5px solid var(--ua-blue);">
+    <div style="width: 72px; height: 72px; margin: 0 auto 16px auto; background-color: var(--ua-azure-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2.5px solid var(--ua-blue); box-shadow: var(--shadow-sm);">
         <span style="font-size: 2rem;">🎓</span>
     </div>
     
-    <h2 style="color: #073823; font-size: 1.5rem; margin-bottom: 6px;">Student SIAS Portal</h2>
-    <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 25px;">
+    <h2 style="color: var(--ua-navy); font-size: 1.6rem; font-weight: 800; margin-bottom: 6px;">Student SIAS Portal</h2>
+    <p style="font-size: 0.88rem; color: var(--ua-text-muted); margin-bottom: 26px;">
         Student Information and Accounting System • University of Abra
     </p>
 
@@ -25,20 +25,20 @@
             <input type="password" name="password" id="password" class="form-control" placeholder="••••••••" required>
         </div>
 
-        <button type="submit" class="btn btn-green" style="width: 100%; padding: 11px; margin-top: 5px;">
+        <button type="submit" class="btn btn-blue" style="width: 100%; padding: 12px; margin-top: 6px; font-size: 0.95rem;">
             Log In to Portal
         </button>
     </form>
 
     <!-- Quick Demo Login Button for Testing / Presentation -->
-    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-        <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 10px;">For demo / teacher presentation:</p>
-        <a href="{{ url_for('portal_demo') }}" class="btn btn-primary" style="display: block; width: 100%;">
+    <div style="margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--ua-border);">
+        <p style="font-size: 0.82rem; color: var(--ua-text-muted); margin-bottom: 12px; font-weight: 600;">For demo / teacher presentation:</p>
+        <a href="{{ url_for('portal_demo') }}" class="btn btn-primary" style="display: block; width: 100%; padding: 11px;">
             👉 1-Click Demo Login (Maria Santos - BSIT)
         </a>
     </div>
 
-    <div style="margin-top: 15px; font-size: 0.75rem; color: #94a3b8;">
+    <div style="margin-top: 18px; font-size: 0.76rem; color: var(--ua-text-muted);">
         Free Higher Education Act (RA 10931) • Zero Tuition Fee
     </div>
 </div>
